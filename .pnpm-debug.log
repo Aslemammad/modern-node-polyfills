@@ -1,0 +1,55 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "modern-node-polyfills",
+      "version": "0.0.0",
+      "description": "modern polyfills for node native modules based on jspm-core",
+      "main": "index.js",
+      "scripts": {},
+      "keywords": [
+        "polyfills",
+        "shims",
+        "edge"
+      ],
+      "author": "",
+      "license": "ISC"
+    },
+    "prefix": "/home/bagher/modern-node-polyfills"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/home/bagher/.local/share/pnpm/store/v3",
+    "virtualStoreDir": "/home/bagher/modern-node-polyfills/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/home/bagher/modern-node-polyfills",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "jspm-core is not in the npm registry, or you have no permission to fetch it.\n\nAn authorization header was used: Bearer npm_[hidden]",
+    "request": {
+      "authHeaderValue": "Bearer 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",
+      "url": "https://registry.npmjs.org/jspm-core"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "jspm-core",
+    "spec": {
+      "fetchSpec": "latest",
+      "name": "jspm-core",
+      "type": "tag"
+    },
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/jspm-core: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npmjs.org/jspm-core: Not Found - 404\n    at RetryOperation._fn (/home/bagher/.nvm/versions/node/v16.15.1/lib/node_modules/pnpm/dist/pnpm.cjs:85463:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+    }
+  }
+}
