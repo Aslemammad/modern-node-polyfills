@@ -1,0 +1,28 @@
+{
+  "name": "modern-node-polyfills",
+  "version": "0.0.0",
+  "description": "modern polyfills for node native modules based on jspm-core",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "polyfills",
+    "shims",
+    "edge"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jspm/core": "2.0.0-beta.24",
+    "esbuild": "^0.14.47",
+    "local-pkg": "^0.4.1",
+    "@rollup/plugin-inject": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "resolve.exports": "^1.1.0",
+    "tsup": "^6.1.2",
+    "typescript": "^4.7.4",
+    "vitest": "^0.16.0"
+  }
+}
