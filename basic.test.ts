@@ -1,6 +1,5 @@
 import { build } from "esbuild";
 import { readFile, writeFile, unlink } from "fs/promises";
-import global from "global";
 import { expect, test } from "vitest";
 
 import {
@@ -71,4 +70,3 @@ async function createFile(
 
   return { id, unsubscribe: () => unlink(id) };
 }
-
