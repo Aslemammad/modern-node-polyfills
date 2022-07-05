@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm tsup --watch",
-    "build": "pnpm tsup"
+    "build": "pnpm tsup",
+    "test": "pnpm vitest"
   },
   "keywords": [
     "polyfills",
