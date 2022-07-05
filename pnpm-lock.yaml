@@ -10,7 +10,6 @@ specifiers:
   estree-walker: ^2.0.1
   local-pkg: ^0.4.1
   magic-string: ^0.25.7
-  pluginutils: link:@types@rollup/pluginutils
   resolve.exports: ^1.1.0
   rollup: ^2.75.7
   tsup: ^6.1.2
@@ -23,7 +22,6 @@ dependencies:
   acorn: 8.7.1
   esbuild: 0.14.47
   local-pkg: 0.4.1
-  pluginutils: link:@types@rollup/pluginutils
   rollup: 2.75.7
 
 devDependencies:
