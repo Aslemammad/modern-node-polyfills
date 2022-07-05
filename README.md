@@ -1,5 +1,5 @@
 # modern-node-polyfills
-A way to enable using Node native modules in non-node (Cloudflare, Deno,
+A way to enable using Node native modules in non-node (Browser, Cloudflare, Deno,
 ...) environemnts with modern polyfills from [JSPM](https://github.com/jspm/jspm-core).
 
 [Here](https://github.com/jspm/jspm-core/tree/main/nodelibs/browser) are the modules that are supported in modern-node-polyfills.
