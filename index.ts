@@ -2,11 +2,12 @@ import { resolve, join } from "node:path";
 import { builtinModules } from "node:module";
 import { resolve as resolveExports } from "resolve.exports";
 import { loadPackageJSON, resolveModule } from "local-pkg";
-import { createRequire } from 'module'
-import injectPlugin, { RollupInjectOptions } from "@rollup/plugin-inject";
+import { createRequire } from "module";
+import createInjectPlugin, { RollupInjectOptions } from "./plugin";
+import { parse as _parse } from "acorn";
 import { build } from "esbuild";
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 
 async function polyfillPath(module: string) {
   if (module.startsWith("node:")) {
@@ -17,11 +18,11 @@ async function polyfillPath(module: string) {
     throw new Error(`Node.js does not have ${module} in its builtin modules`);
 
   const jspmPath = resolve(
-    require.resolve("@jspm/core/nodelibs/fs"),
+    require.resolve(`@jspm/core/nodelibs/${module}`),
     "../../.."
   );
   const jspmPackageJson = await loadPackageJSON(jspmPath);
-  const exportPath = resolveExports(jspmPackageJson, "./nodelibs/fs", {
+  const exportPath = resolveExports(jspmPackageJson, `./nodelibs/${module}`, {
     browser: true,
   });
 
@@ -45,23 +46,47 @@ async function polyfillContent(module: string) {
       bundle: true,
       entryPoints: [exportFullPath],
     })
-  ).outputFiles[0].text;
+  ).outputFiles[0]!.text;
 
   return content;
 }
-// console.log(import.meta.url);
-function inject(content: string, options: RollupInjectOptions) {
-  const { transform } = injectPlugin(
-    options ?? {
-      modules: {
-        process: "process",
-        Buffer: ["buffer", "Buffer"],
-        global: './global',
-        __filename: '/',
-        __dirname: '/',
-      },
-    }
+
+type Globals = { __filename?: string; __dirname?: string };
+
+async function inject(
+  content: string,
+  options: RollupInjectOptions
+): Promise<string> {
+  const injectPlugin = createInjectPlugin(options);
+
+  const parse: typeof _parse = (input, opts) =>
+    _parse(input, { ...opts, ecmaVersion: "latest" });
+
+  const result = injectPlugin.transform!.call(
+    { warn: console.warn, parse } as any,
+    content,
+    __filename
   );
+  return result?.code || content;
 }
 
-export { polyfillPath, polyfillContent };
+async function polyfillGlobals(
+  content: string,
+  { __filename = "/", __dirname = "/" }: Globals = {}
+) {
+  return inject(content, {
+    expressions: {
+      __filename,
+      __dirname,
+    },
+    modules: {
+      process: await polyfillPath("process"),
+      Buffer: [await polyfillPath("buffer"), "Buffer"],
+      global: "modern-node-polyfills/global",
+      setImmediate: [await polyfillPath("timers"), "setImmediate"],
+      clearImmediate: [await polyfillPath("timers"), "clearImmediate"]
+    },
+  });
+}
+
+export { polyfillPath, polyfillContent, inject, polyfillGlobals };

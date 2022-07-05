@@ -4,21 +4,39 @@
   "description": "modern polyfills for node native modules based on jspm-core",
   "type": "module",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "pnpm tsup --watch",
+    "build": "pnpm tsup"
+  },
   "keywords": [
     "polyfills",
     "shims",
     "edge"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Mohammad Bagher Abiat",
+  "license": "MIT",
+  "exports": {
+    "./": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./global": {
+      "types": "./dist/global.d.ts",
+      "default": "./dist/esm/global.js"
+    }
+  },
   "dependencies": {
     "@jspm/core": "2.0.0-beta.24",
+    "@rollup/plugin-inject": "^4.0.4",
+    "acorn": "^8.7.1",
     "esbuild": "^0.14.47",
     "local-pkg": "^0.4.1",
-    "@rollup/plugin-inject": "^4.0.4"
+    "rollup": "^2.75.7"
   },
   "devDependencies": {
+    "@rollup/pluginutils": "^3.1.0",
+    "estree-walker": "^2.0.1",
+    "magic-string": "^0.25.7",
     "@types/node": "^18.0.0",
     "resolve.exports": "^1.1.0",
     "tsup": "^6.1.2",

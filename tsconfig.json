@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es2022",
+    "module": "es2022",
     "strict": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
@@ -15,6 +15,6 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["./*"],
   "exclude": ["node_modules", "dist"]
 }
