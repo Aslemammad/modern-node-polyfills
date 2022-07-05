@@ -46,8 +46,7 @@ A way to polyfill all global node expressions, in this case, `process`,
 `Buffer`, `global`, `setImmediate`, `clearImmediate`, `__dirname` and `__filename`. It's possible to customize the `__filename` and `__dirname` values in the second argument of this function.
 ```ts
 console.log(await polyfillGlobals(`
-    // console.log(__filename);
-    console.log(global)
+    console.log(global);
     console.log(process);
     console.log(Buffer);
     console.log(setImmediate);
