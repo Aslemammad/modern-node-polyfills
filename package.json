@@ -26,6 +26,9 @@
       "default": "./dist/esm/global.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@jspm/core": "2.0.0-beta.24",
     "@rollup/plugin-inject": "^4.0.4",
