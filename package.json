@@ -3,7 +3,8 @@
   "version": "0.0.2",
   "description": "modern polyfills for node native modules based on jspm-core",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
   "scripts": {
     "dev": "pnpm tsup --watch",
     "build": "pnpm tsup",
