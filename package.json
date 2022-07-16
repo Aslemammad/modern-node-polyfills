@@ -20,10 +20,12 @@
   "exports": {
     "./": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
       "default": "./dist/esm/index.js"
     },
     "./global": {
       "types": "./dist/global.d.ts",
+      "import": "./dist/esm/global.js",
       "default": "./dist/esm/global.js"
     }
   },
