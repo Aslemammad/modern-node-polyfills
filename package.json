@@ -3,8 +3,6 @@
   "version": "0.0.5",
   "description": "modern polyfills for node native modules based on jspm-core",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "scripts": {
     "dev": "pnpm tsup --watch",
     "build": "pnpm tsup",
