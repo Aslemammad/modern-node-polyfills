@@ -5,7 +5,7 @@ export default defineConfig({
   external: ['@rollup/pluginutils'],
   splitting: true,
   outDir: 'dist',
-  format: ['esm'],
+  format: ['esm', 'cjs'],
   tsconfig: './tsconfig.json',
   target: 'es2020',
   clean: true,

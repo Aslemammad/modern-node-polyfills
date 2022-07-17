@@ -3,6 +3,10 @@
   "version": "0.0.6",
   "description": "modern polyfills for node native modules based on jspm-core",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "dev": "pnpm tsup --watch",
     "build": "pnpm tsup",
@@ -16,19 +20,19 @@
   "author": "Mohammad Bagher Abiat",
   "license": "MIT",
   "exports": {
-    "./": {
+    ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./global": {
       "types": "./dist/global.d.ts",
       "import": "./dist/global.js",
-      "default": "./dist/global.js"
+      "require": "./dist/global.cjs"
     }
   },
   "files": [
-    "dist"
+    "dist/**"
   ],
   "dependencies": {
     "@jspm/core": "2.0.0-beta.24",
