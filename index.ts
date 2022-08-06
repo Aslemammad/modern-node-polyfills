@@ -65,7 +65,7 @@ async function inject(
   const result = injectPlugin.transform!.call(
     { warn: console.warn, parse } as any,
     content,
-    __filename
+    ''
   );
   return result?.code || content;
 }
