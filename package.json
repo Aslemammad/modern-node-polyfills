@@ -37,7 +37,7 @@
   "dependencies": {
     "@jspm/core": "2.0.0-beta.24",
     "@rollup/plugin-inject": "^4.0.4",
-    "acorn": "^8.7.1",
+    "acorn": "^8.8.0",
     "esbuild": "^0.14.47",
     "local-pkg": "^0.4.1",
     "rollup": "^2.75.7"

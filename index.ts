@@ -55,38 +55,40 @@ type Globals = { __filename?: string; __dirname?: string };
 
 async function inject(
   content: string,
-  options: RollupInjectOptions
+  options: RollupInjectOptions,
+  id?: string
 ): Promise<string> {
   const injectPlugin = createInjectPlugin(options);
 
   const parse: typeof _parse = (input, opts) =>
-    _parse(input, { ...opts, ecmaVersion: "latest" });
+    _parse(input, { ...opts, sourceType: "module", ecmaVersion: "latest" });
 
   const result = injectPlugin.transform!.call(
     { warn: console.warn, parse } as any,
     content,
-    ''
+    id ?? ""
   );
   return result?.code || content;
 }
 
-async function polyfillGlobals(
-  content: string,
-  { __filename = "/", __dirname = "/" }: Globals = {}
-) {
-  return inject(content, {
-    expressions: {
-      __filename,
-      __dirname,
+async function polyfillGlobals(content: string, globals: Globals = {}) {
+  return inject(
+    content,
+    {
+      expressions: {
+        __filename: globals?.__filename || "/",
+        __dirname: globals?.__dirname || "/",
+      },
+      modules: {
+        process: await polyfillPath("process"),
+        Buffer: [await polyfillPath("buffer"), "Buffer"],
+        global: "modern-node-polyfills/global",
+        setImmediate: [await polyfillPath("timers"), "setImmediate"],
+        clearImmediate: [await polyfillPath("timers"), "clearImmediate"],
+      },
     },
-    modules: {
-      process: await polyfillPath("process"),
-      Buffer: [await polyfillPath("buffer"), "Buffer"],
-      global: "modern-node-polyfills/global",
-      setImmediate: [await polyfillPath("timers"), "setImmediate"],
-      clearImmediate: [await polyfillPath("timers"), "clearImmediate"]
-    },
-  });
+    globals.__filename
+  );
 }
 
 export { polyfillPath, polyfillContent, inject, polyfillGlobals };

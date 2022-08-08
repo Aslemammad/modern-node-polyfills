@@ -5,7 +5,7 @@ specifiers:
   '@rollup/plugin-inject': ^4.0.4
   '@rollup/pluginutils': ^3.1.0
   '@types/node': ^18.0.0
-  acorn: ^8.7.1
+  acorn: ^8.8.0
   esbuild: ^0.14.47
   estree-walker: ^2.0.1
   local-pkg: ^0.4.1
@@ -19,7 +19,7 @@ specifiers:
 dependencies:
   '@jspm/core': 2.0.0-beta.24
   '@rollup/plugin-inject': 4.0.4_rollup@2.75.7
-  acorn: 8.7.1
+  acorn: 8.8.0
   esbuild: 0.14.47
   local-pkg: 0.4.1
   rollup: 2.75.7
@@ -100,8 +100,8 @@ packages:
     resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
     dev: true
 
-  /acorn/8.7.1:
-    resolution: {integrity: sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==}
+  /acorn/8.8.0:
+    resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: false
