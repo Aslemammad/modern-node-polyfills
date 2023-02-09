@@ -10,11 +10,14 @@ import {
 } from "./index";
 
 test("polyfillPath", async () => {
-  expect(await readFile(await polyfillPath("fs"), "utf8")).toMatchSnapshot();
-  expect(
-    await readFile(await polyfillPath("node:fs"), "utf8")
-  ).toMatchSnapshot();
-  expect(await readFile(await polyfillPath("http"), "utf8")).toMatchSnapshot();
+  expect((await polyfillPath("fs")).endsWith('@jspm/core/nodelibs/browser/fs.js'))
+    .toBe(true);
+  expect((await polyfillPath("node:fs")).endsWith('@jspm/core/nodelibs/browser/fs.js'))
+    .toBe(true);
+  expect((await polyfillPath("node:fs/promises")).endsWith('@jspm/core/nodelibs/browser/fs/promises.js'))
+    .toBe(true);
+  expect((await polyfillPath("http")).endsWith('@jspm/core/nodelibs/browser/http.js'))
+    .toBe(true);
   expect(polyfillPath("wrong")).rejects.toThrowError();
 });
 
