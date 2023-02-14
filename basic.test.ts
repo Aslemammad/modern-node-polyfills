@@ -17,7 +17,7 @@ test("polyfillPath", async () => {
   expect((await polyfillPath("node:fs"))
     .endsWith(path.join('@jspm', 'core', 'nodelibs', 'browser', 'fs.js'))
   ).toBe(true);
-  expect((await polyfillPath("node:fs', 'promises"))
+  expect((await polyfillPath("node:fs/promises"))
     .endsWith(path.join('@jspm', 'core', 'nodelibs', 'browser', 'fs', 'promises.js'))
   ).toBe(true);
   expect((await polyfillPath("http"))
