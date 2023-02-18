@@ -7,23 +7,26 @@ import { build } from "esbuild";
 
 import createInjectPlugin, { type RollupInjectOptions } from "./plugin";
 
-const require = createRequire(import.meta.url);
+if (!globalThis.require) {
+  const require = createRequire(import.meta.url);
+  globalThis.require = require;
+}
 
-async function polyfillPath(module: string) {
-  if (module.startsWith("node:")) {
-    module = module.replace("node:", "");
+async function polyfillPath(mod: string) {
+  if (mod.startsWith("node:")) {
+    mod = mod.replace("node:", "");
   }
 
-  if (!builtinModules.includes(module))
-    throw new Error(`Node.js does not have ${module} in its builtin modules`);
+  if (!builtinModules.includes(mod))
+    throw new Error(`Node.js does not have ${mod} in its builtin modules`);
 
   const jspmPath = resolve(
-    require.resolve(`@jspm/core/nodelibs/${module}`),
+    require.resolve(`@jspm/core/nodelibs/${mod}`),
     // ensure "fs/promises" is resolved properly
-    "../../.." + (module.includes('/') ? "/.." : "")
+    "../../.." + (mod.includes('/') ? "/.." : "")
   );
   const jspmPackageJson = await loadPackageJSON(jspmPath);
-  const exportPath = resolveExports(jspmPackageJson, `./nodelibs/${module}`, {
+  const exportPath = resolveExports(jspmPackageJson, `./nodelibs/${mod}`, {
     browser: true,
   });
 
@@ -37,8 +40,8 @@ async function polyfillPath(module: string) {
   return exportFullPath;
 }
 
-async function polyfillContent(module: string) {
-  const exportFullPath = await polyfillPath(module);
+async function polyfillContent(mod: string) {
+  const exportFullPath = await polyfillPath(mod);
 
   const content = (
     await build({
