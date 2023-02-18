@@ -23,12 +23,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     },
     "./global": {
       "types": "./dist/global.d.ts",
       "import": "./dist/global.js",
-      "require": "./dist/global.cjs"
+      "require": "./dist/global.cjs",
+      "default": "./dist/global.js"
     }
   },
   "files": [
@@ -51,5 +53,9 @@
     "tsup": "^6.1.3",
     "typescript": "^4.7.4",
     "vitest": "^0.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aslemammad/modern-node-polyfills.git"
   }
 }
