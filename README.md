@@ -54,6 +54,28 @@ console.log(await polyfillGlobals(`
 `))
 // shows the polyfilled content
 ```
+As a third argument, it's possible to change the path of those global polyfills or
+even disable them using `null`.
+
+```ts
+const content = await polyfillGlobals(
+	`
+	console.log(global)
+	console.log(process);
+	console.log(Buffer);
+	console.log(setImmediate);
+	console.log(clearImmediate);
+`,
+	{},
+	{
+		process: "/here/process.js",
+		Buffer: null,
+		global: null,
+		setImmediate: null,
+		clearImmediate: null,
+	}
+);
+```
 
 # Contribution
 Feel free to let me know what you need for this package or what issue you have,

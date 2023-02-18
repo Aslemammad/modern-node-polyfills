@@ -14755,3 +14755,15 @@ export {
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 "
 `;
+
+exports[`polyfillGlobals with options 1`] = `
+"import { default as process } from '/here/process.js';
+
+
+    console.log(global)
+    console.log(process);
+    console.log(Buffer);
+    console.log(setImmediate);
+    console.log(clearImmediate);
+"
+`;
