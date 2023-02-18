@@ -1,11 +1,11 @@
 import { resolve, join } from "node:path";
-import { builtinModules } from "node:module";
+import { builtinModules, createRequire } from "node:module";
 import { resolve as resolveExports } from "resolve.exports";
 import { loadPackageJSON, resolveModule } from "local-pkg";
-import { createRequire } from "module";
-import createInjectPlugin, { RollupInjectOptions } from "./plugin";
 import { parse as _parse } from "acorn";
 import { build } from "esbuild";
+
+import createInjectPlugin, { type RollupInjectOptions } from "./plugin";
 
 const require = createRequire(import.meta.url);
 
@@ -19,7 +19,8 @@ async function polyfillPath(module: string) {
 
   const jspmPath = resolve(
     require.resolve(`@jspm/core/nodelibs/${module}`),
-    "../../.."
+    // ensure "fs/promises" is resolved properly
+    "../../.." + (module.includes('/') ? "/.." : "")
   );
   const jspmPackageJson = await loadPackageJSON(jspmPath);
   const exportPath = resolveExports(jspmPackageJson, `./nodelibs/${module}`, {
