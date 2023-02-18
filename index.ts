@@ -83,7 +83,7 @@ async function polyfillGlobals(content: string, globals: Globals = {}) {
       modules: {
         process: await polyfillPath("process"),
         Buffer: [await polyfillPath("buffer"), "Buffer"],
-        global: "modern-node-polyfills/global",
+        global: require.resolve("modern-node-polyfills/global"),
         setImmediate: [await polyfillPath("timers"), "setImmediate"],
         clearImmediate: [await polyfillPath("timers"), "clearImmediate"],
       },
