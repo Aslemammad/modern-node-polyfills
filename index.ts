@@ -75,7 +75,17 @@ async function inject(
   return result?.code || content;
 }
 
-async function polyfillGlobals(content: string, globals: Globals = {}) {
+type InjectmentWithNull = string | [string, string] | null
+
+type Modules = Partial<{
+  process: InjectmentWithNull,
+  Buffer: InjectmentWithNull,
+  global: InjectmentWithNull,
+  setImmediate: InjectmentWithNull,
+  clearImmediate: InjectmentWithNull,
+}>
+
+async function polyfillGlobals(content: string, globals: Globals = {}, mods: Modules = {}) {
   return inject(
     content,
     {
@@ -83,16 +93,21 @@ async function polyfillGlobals(content: string, globals: Globals = {}) {
         __filename: globals?.__filename || "/",
         __dirname: globals?.__dirname || "/",
       },
-      modules: {
+      modules: removeEmpty({
         process: await polyfillPath("process"),
         Buffer: [await polyfillPath("buffer"), "Buffer"],
         global: require.resolve("modern-node-polyfills/global"),
         setImmediate: [await polyfillPath("timers"), "setImmediate"],
         clearImmediate: [await polyfillPath("timers"), "clearImmediate"],
-      },
+        ...mods
+      }),
     },
     globals.__filename
   );
+}
+
+function removeEmpty<T>(obj: Record<string, T>): Record<string, NonNullable<T>> {
+  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null)) as Record<string, NonNullable<T>>;
 }
 
 export { polyfillPath, polyfillContent, inject, polyfillGlobals };
