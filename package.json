@@ -4,7 +4,7 @@
   "description": "modern polyfills for node native modules based on jspm-core",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "module": "./index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
@@ -22,9 +22,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
+      "import": "./index.js",
       "require": "./dist/index.cjs",
-      "default": "./dist/index.js"
+      "default": "./index.js"
     },
     "./global": {
       "types": "./dist/global.d.ts",
@@ -34,7 +34,8 @@
     }
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "./index.js"
   ],
   "dependencies": {
     "@jspm/core": "2.0.0-beta.24",
