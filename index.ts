@@ -1,16 +1,11 @@
 import { resolve, join } from "node:path";
-import { builtinModules, createRequire } from "node:module";
+import { builtinModules } from "node:module";
 import { resolve as resolveExports } from "resolve.exports";
 import { loadPackageJSON, resolveModule } from "local-pkg";
 import { parse as _parse } from "acorn";
 import { build } from "esbuild";
 
 import createInjectPlugin, { type RollupInjectOptions } from "./plugin";
-
-if (!globalThis.require) {
-  const require = createRequire(import.meta.url);
-  globalThis.require = require;
-}
 
 async function polyfillPath(mod: string) {
   if (mod.startsWith("node:")) {
