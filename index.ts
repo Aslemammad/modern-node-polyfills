@@ -25,7 +25,7 @@ async function polyfillPath(mod: string) {
     browser: true,
   });
 
-  const exportFullPath = resolveModule(join(jspmPath, exportPath || ""));
+  const exportFullPath = resolveModule(join(jspmPath, exportPath?.[0] || ""));
 
   if (!exportPath || !exportFullPath) {
     throw new Error(
