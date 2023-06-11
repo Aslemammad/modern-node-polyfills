@@ -699,7 +699,7 @@ X.debuglog = function(e9) {
 }, X.isBuffer = i$1;
 var Se = [\\"Jan\\", \\"Feb\\", \\"Mar\\", \\"Apr\\", \\"May\\", \\"Jun\\", \\"Jul\\", \\"Aug\\", \\"Sep\\", \\"Oct\\", \\"Nov\\", \\"Dec\\"];
 function Be() {
-  var e9 = new Date(), t8 = [Oe(e9.getHours()), Oe(e9.getMinutes()), Oe(e9.getSeconds())].join(\\":\\");
+  var e9 = /* @__PURE__ */ new Date(), t8 = [Oe(e9.getHours()), Oe(e9.getMinutes()), Oe(e9.getSeconds())].join(\\":\\");
   return [e9.getDate(), Se[e9.getMonth()], t8].join(\\" \\");
 }
 function ke(e9, t8) {
@@ -3218,7 +3218,8 @@ function dew$g() {
     if (first === void 0 || last === void 0) {
       boundsError(offset, this.length - 8);
     }
-    const val = (first << 24) + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
+    const val = (first << 24) + // Overflow
+    this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
     return (BigInt(val) << BigInt(32)) + BigInt(this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last);
   });
   Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
@@ -4030,6 +4031,7 @@ function dew$d() {
         }
         return ret;
       }
+      // Consumes a specified amount of bytes or characters from the buffered data.
     }, {
       key: \\"consume\\",
       value: function consume(n8, hasStrings) {
@@ -4049,6 +4051,7 @@ function dew$d() {
       value: function first() {
         return this.head.data;
       }
+      // Consumes a specified amount of characters from the buffered data.
     }, {
       key: \\"_getString\\",
       value: function _getString(n8) {
@@ -4082,6 +4085,7 @@ function dew$d() {
         this.length -= c7;
         return ret;
       }
+      // Consumes a specified amount of bytes from the buffered data.
     }, {
       key: \\"_getBuffer\\",
       value: function _getBuffer(n8) {
@@ -4113,11 +4117,14 @@ function dew$d() {
         this.length -= c7;
         return ret;
       }
+      // Make sure the linked list only shows the minimal necessary information.
     }, {
       key: custom,
       value: function value(_4, options) {
         return inspect3(this, _objectSpread({}, options, {
+          // Only inspect one level.
           depth: 0,
+          // It should not recurse.
           customInspect: false
         }));
       }
@@ -4589,6 +4596,9 @@ function dew$8() {
     return this;
   };
   Object.defineProperty(Writable2.prototype, \\"writableBuffer\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState && this._writableState.getBuffer();
@@ -4601,6 +4611,9 @@ function dew$8() {
     return chunk;
   }
   Object.defineProperty(Writable2.prototype, \\"writableHighWaterMark\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState.highWaterMark;
@@ -4779,6 +4792,9 @@ function dew$8() {
     return this;
   };
   Object.defineProperty(Writable2.prototype, \\"writableLength\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState.length;
@@ -4851,6 +4867,9 @@ function dew$8() {
     state.corkedRequestsFree.next = corkReq;
   }
   Object.defineProperty(Writable2.prototype, \\"destroyed\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       if (this._writableState === void 0) {
@@ -4916,18 +4935,27 @@ function dew$7() {
     }
   }
   Object.defineProperty(Duplex2.prototype, \\"writableHighWaterMark\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState.highWaterMark;
     }
   });
   Object.defineProperty(Duplex2.prototype, \\"writableBuffer\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState && this._writableState.getBuffer();
     }
   });
   Object.defineProperty(Duplex2.prototype, \\"writableLength\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._writableState.length;
@@ -4942,6 +4970,9 @@ function dew$7() {
     self2.end();
   }
   Object.defineProperty(Duplex2.prototype, \\"destroyed\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       if (this._readableState === void 0 || this._writableState === void 0) {
@@ -5354,6 +5385,9 @@ function dew$3() {
     Stream2.call(this);
   }
   Object.defineProperty(Readable2.prototype, \\"destroyed\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       if (this._readableState === void 0) {
@@ -5940,18 +5974,27 @@ function dew$3() {
     };
   }
   Object.defineProperty(Readable2.prototype, \\"readableHighWaterMark\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._readableState.highWaterMark;
     }
   });
   Object.defineProperty(Readable2.prototype, \\"readableBuffer\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._readableState && this._readableState.buffer;
     }
   });
   Object.defineProperty(Readable2.prototype, \\"readableFlowing\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._readableState.flowing;
@@ -5964,6 +6007,9 @@ function dew$3() {
   });
   Readable2._fromList = fromList;
   Object.defineProperty(Readable2.prototype, \\"readableLength\\", {
+    // making it explicit this property is not enumerable
+    // because otherwise some prototype manipulation in
+    // userland will fail
     enumerable: false,
     get: function get() {
       return this._readableState.length;
@@ -7607,6 +7653,7 @@ function dew3() {
     return dir + sep2 + base;
   }
   var posix2 = {
+    // path.resolve([from ...], to)
     resolve: function resolve3() {
       var resolvedPath = \\"\\";
       var resolvedAbsolute = false;
@@ -7860,7 +7907,9 @@ function dew3() {
           preDotState = -1;
         }
       }
-      if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+      if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+      preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+      preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
         return \\"\\";
       }
       return path2.slice(startDot, end);
@@ -7919,7 +7968,9 @@ function dew3() {
           preDotState = -1;
         }
       }
-      if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+      if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+      preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+      preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
         if (end !== -1) {
           if (startPart === 0 && isAbsolute2)
             ret.base = ret.name = path2.slice(1, end);
@@ -8605,6 +8656,7 @@ function dew5() {
     return dir + sep2 + base;
   }
   var posix2 = {
+    // path.resolve([from ...], to)
     resolve: function resolve3() {
       var resolvedPath = \\"\\";
       var resolvedAbsolute = false;
@@ -8858,7 +8910,9 @@ function dew5() {
           preDotState = -1;
         }
       }
-      if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+      if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+      preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+      preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
         return \\"\\";
       }
       return path2.slice(startDot, end);
@@ -8917,7 +8971,9 @@ function dew5() {
           preDotState = -1;
         }
       }
-      if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+      if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+      preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+      preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
         if (end !== -1) {
           if (startPart === 0 && isAbsolute2)
             ret.base = ret.name = path2.slice(1, end);
@@ -8989,7 +9045,8 @@ function getPathFromURLWin$1(url) {
   for (let n8 = 0; n8 < pathname.length; n8++) {
     if (pathname[n8] === \\"%\\") {
       const third = pathname.codePointAt(n8 + 2) || 32;
-      if (pathname[n8 + 1] === \\"2\\" && third === 102 || pathname[n8 + 1] === \\"5\\" && third === 99) {
+      if (pathname[n8 + 1] === \\"2\\" && third === 102 || // 2f 2F /
+      pathname[n8 + 1] === \\"5\\" && third === 99) {
         throw new Deno.errors.InvalidData(
           \\"must not include encoded \\\\\\\\ or / characters\\"
         );
@@ -9003,7 +9060,8 @@ function getPathFromURLWin$1(url) {
   } else {
     const letter = pathname.codePointAt(1) | 32;
     const sep2 = pathname[2];
-    if (letter < CHAR_LOWERCASE_A$1 || letter > CHAR_LOWERCASE_Z$1 || sep2 !== \\":\\") {
+    if (letter < CHAR_LOWERCASE_A$1 || letter > CHAR_LOWERCASE_Z$1 || // a..z A..Z
+    sep2 !== \\":\\") {
       throw new Deno.errors.InvalidData(\\"file url path must be absolute\\");
     }
     return pathname.slice(1);
@@ -9088,7 +9146,8 @@ function getPathFromURLWin(url) {
   for (let n8 = 0; n8 < pathname.length; n8++) {
     if (pathname[n8] === \\"%\\") {
       const third = pathname.codePointAt(n8 + 2) || 32;
-      if (pathname[n8 + 1] === \\"2\\" && third === 102 || pathname[n8 + 1] === \\"5\\" && third === 99) {
+      if (pathname[n8 + 1] === \\"2\\" && third === 102 || // 2f 2F /
+      pathname[n8 + 1] === \\"5\\" && third === 99) {
         throw new Deno.errors.InvalidData(
           \\"must not include encoded \\\\\\\\ or / characters\\"
         );
@@ -9102,7 +9161,8 @@ function getPathFromURLWin(url) {
   } else {
     const letter = pathname.codePointAt(1) | 32;
     const sep2 = pathname[2];
-    if (letter < CHAR_LOWERCASE_A || letter > CHAR_LOWERCASE_Z || sep2 !== \\":\\") {
+    if (letter < CHAR_LOWERCASE_A || letter > CHAR_LOWERCASE_Z || // a..z A..Z
+    sep2 !== \\":\\") {
       throw new Deno.errors.InvalidData(\\"file url path must be absolute\\");
     }
     return pathname.slice(1);
@@ -10361,7 +10421,8 @@ function dew6() {
     if (first === void 0 || last === void 0) {
       boundsError(offset, this.length - 8);
     }
-    const val = (first << 24) + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
+    const val = (first << 24) + // Overflow
+    this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
     return (BigInt(val) << BigInt(32)) + BigInt(this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last);
   });
   Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
@@ -11638,9 +11699,9 @@ function dew$62() {
       var _this = _super.call(this) || this;
       _this.uid = process_1.default.getuid();
       _this.gid = process_1.default.getgid();
-      _this.atime = new Date();
-      _this.mtime = new Date();
-      _this.ctime = new Date();
+      _this.atime = /* @__PURE__ */ new Date();
+      _this.mtime = /* @__PURE__ */ new Date();
+      _this.ctime = /* @__PURE__ */ new Date();
       _this.perm = 438;
       _this.mode = S_IFREG;
       _this.nlink = 1;
@@ -11769,7 +11830,7 @@ function dew$62() {
       this.touch();
     };
     Node2.prototype.touch = function() {
-      this.mtime = new Date();
+      this.mtime = /* @__PURE__ */ new Date();
       this.emit(\\"change\\", this);
     };
     Node2.prototype.canRead = function(uid, gid) {
@@ -12310,6 +12371,7 @@ function dew$23() {
   var kMinPoolSpace = 128;
   var ERRSTR = {
     PATH_STR: \\"path must be a string or Buffer\\",
+    // FD:             'file descriptor must be a unsigned 32-bit integer',
     FD: \\"fd must be a file descriptor\\",
     MODE_INT: \\"mode must be an int\\",
     CB: \\"callback must be a function\\",
@@ -13014,12 +13076,14 @@ function dew$23() {
           this.mkdirpBase(
             dir,
             511
+            /* DIR */
           );
           this.writeFileSync(filename, data);
         } else {
           this.mkdirpBase(
             filename,
             511
+            /* DIR */
           );
         }
       }
@@ -13378,6 +13442,7 @@ function dew$23() {
         buf,
         FLAGS.w,
         438
+        /* DEFAULT */
       );
     };
     Volume2.prototype.copyFileSync = function(src, dest, flags) {
@@ -13815,6 +13880,7 @@ function dew$23() {
         this.mkdirBase(
           filename,
           511
+          /* DIR */
         );
         return (0, encoding_1.strToEncoding)(filename, encoding);
       } catch (err) {
@@ -14772,13 +14838,22 @@ export {
   writev,
   writevSync
 };
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+/*! Bundled license information:
+
+@jspm/core/nodelibs/browser/chunk-44e51b61.js:
+  (*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> *)
+
+@jspm/core/nodelibs/browser/assert.js:
+  (*!
+   * The buffer module from node.js, for the browser.
+   *
+   * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+   * @license  MIT
+   *)
+
+@jspm/core/nodelibs/browser/buffer.js:
+  (*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> *)
+*/
 "
 `;
 
