@@ -46,7 +46,7 @@
     "@rollup/plugin-inject": "^4.0.4",
     "@types/node": "^18.15.13",
     "acorn": "^8.8.2",
-    "esbuild": "^0.14.54",
+    "esbuild": "^0.18.0",
     "estree-walker": "^2.0.2",
     "magic-string": "^0.25.9",
     "resolve.exports": "^1.1.1",

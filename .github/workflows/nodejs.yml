@@ -8,7 +8,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        esbuild: [0.14.0, 0.14, 0.15.0, 0.15, 0.16.0, 0.16, 0.17.0, 0.17, 0.18.0, 0.18]
         os: [ubuntu-latest, macos-latest, windows-latest]
         node-version: [14, 16.0.0, 16, 18.0.0, 18, 20.0.0, 20]
     runs-on: ${{matrix.os}}
@@ -20,11 +19,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 8
+          version: 7
       - name: Install Dependencies
         run: pnpm install
-      - name: Install esbuild ${{ matrix.esbuild }}
-        run: pnpm install esbuild@${{ matrix.esbuild }}
       - name: Build
         run: pnpm build
       - name: Test
