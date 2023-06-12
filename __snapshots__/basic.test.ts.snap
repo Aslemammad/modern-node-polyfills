@@ -1,9 +1,9 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`inject 1`] = `"console.log(\\"/\\");"`;
 
 exports[`polyfillContent 1`] = `
-"// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-4bd36a8f.js
+"// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-4bd36a8f.js
 var e;
 var t;
 var n = \\"object\\" == typeof Reflect ? Reflect : null;
@@ -184,7 +184,7 @@ y.defaultMaxListeners;
 y.init;
 y.listenerCount;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-5decc758.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-5decc758.js
 var e2;
 var t2;
 var n2;
@@ -303,7 +303,7 @@ T.umask;
 T.version;
 T.versions;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-b4205b57.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-b4205b57.js
 var t3 = \\"function\\" == typeof Symbol && \\"symbol\\" == typeof Symbol.toStringTag;
 var e3 = Object.prototype.toString;
 var o3 = function(o8) {
@@ -768,7 +768,7 @@ X.promisify = function(e9) {
   return Object.setPrototypeOf(t8, Object.getPrototypeOf(e9)), Object.defineProperties(t8, ee(e9)), t8;
 };
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-ce0fbc82.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-ce0fbc82.js
 X._extend;
 X.callbackify;
 X.debuglog;
@@ -821,7 +821,7 @@ var types = X.types;
 var TextEncoder = self.TextEncoder;
 var TextDecoder2 = self.TextDecoder;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-2eac56ff.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-2eac56ff.js
 var exports = {};
 var _dewExec = false;
 var _global = typeof globalThis !== \\"undefined\\" ? globalThis : typeof self !== \\"undefined\\" ? self : global;
@@ -1011,7 +1011,7 @@ process.umask;
 process.version;
 process.versions;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-4ccc3a29.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-4ccc3a29.js
 for (r$13 = { byteLength: function(r9) {
   var t8 = u$2(r9), e9 = t8[0], n8 = t8[1];
   return 3 * (e9 + n8) / 4 - n8;
@@ -2005,7 +2005,7 @@ e$12.StringDecoder = a4, a4.prototype.write = function(t8) {
 e$12.StringDecoder;
 e$12.StringDecoder;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-44e51b61.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-44e51b61.js
 var exports$2$1 = {};
 var _dewExec$2$1 = false;
 function dew$2$1() {
@@ -6296,7 +6296,7 @@ function dew2() {
   return exports2;
 }
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/assert.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/assert.js
 function e5(e9, r9) {
   if (null == e9)
     throw new TypeError(\\"Cannot convert first argument to object\\");
@@ -7535,7 +7535,7 @@ var strict = et.strict;
 var strictEqual = et.strictEqual;
 var throws = et.throws;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/util.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/util.js
 var _extend2 = X._extend;
 var callbackify2 = X.callbackify;
 var debuglog2 = X.debuglog;
@@ -7564,7 +7564,7 @@ var types2 = X.types;
 var TextEncoder2 = X.TextEncoder = globalThis.TextEncoder;
 var TextDecoder3 = X.TextDecoder = globalThis.TextDecoder;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-23dbec7b.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-23dbec7b.js
 var exports$12 = {};
 var _dewExec3 = false;
 function dew3() {
@@ -8004,7 +8004,7 @@ function dew3() {
 }
 var exports3 = dew3();
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/path.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/path.js
 var _makeLong = exports3._makeLong;
 var basename = exports3.basename;
 var delimiter = exports3.delimiter;
@@ -8021,7 +8021,7 @@ var resolve = exports3.resolve;
 var sep = exports3.sep;
 var win32 = exports3.win32;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/events.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/events.js
 y.once = function(emitter, event) {
   return new Promise((resolve3, reject) => {
     function eventListener(...args) {
@@ -8111,7 +8111,7 @@ var {
   once
 } = y;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-6c718bbe.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-6c718bbe.js
 var exports$13 = {};
 var _dewExec4 = false;
 var _global3 = typeof globalThis !== \\"undefined\\" ? globalThis : typeof self !== \\"undefined\\" ? self : global;
@@ -8197,7 +8197,7 @@ function dew4() {
 }
 var exports4 = dew4();
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/stream.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/stream.js
 var Readable = exports4.Readable;
 Readable.wrap = function(src, options) {
   options = Object.assign({ objectMode: src.readableObjectMode != null || src.objectMode != null || true }, options);
@@ -8219,7 +8219,7 @@ var promises = {
   pipeline: promisify2(exports4.pipeline)
 };
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-924bb2e1.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-924bb2e1.js
 var t6 = 2147483647;
 var o5 = /^xn--/;
 var n5 = /[^\\\\0-\\\\x7E]/;
@@ -8334,7 +8334,7 @@ p5.toUnicode;
 p5.ucs2;
 p5.version;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/chunk-b04e620d.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/chunk-b04e620d.js
 function e7(e9, n8) {
   return Object.prototype.hasOwnProperty.call(e9, n8);
 }
@@ -8382,7 +8382,7 @@ o6.encode;
 o6.parse;
 o6.stringify;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/url.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/url.js
 var h7 = {};
 var e8 = p5;
 var a6 = { isString: function(t8) {
@@ -9208,7 +9208,7 @@ function pathToFileURL(filepath) {
   return outURL;
 }
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/buffer.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/buffer.js
 var exports$32 = {};
 var _dewExec$22 = false;
 function dew$22() {
@@ -11041,7 +11041,7 @@ var Buffer = exports6.Buffer;
 var INSPECT_MAX_BYTES = exports6.INSPECT_MAX_BYTES;
 var kMaxLength = exports6.kMaxLength;
 
-// node_modules/.pnpm/@jspm+core@2.0.0-beta.24/node_modules/@jspm/core/nodelibs/browser/fs.js
+// node_modules/.pnpm/@jspm+core@2.0.1/node_modules/@jspm/core/nodelibs/browser/fs.js
 var exports$h = {};
 var _dewExec$f2 = false;
 function dew$f2() {
